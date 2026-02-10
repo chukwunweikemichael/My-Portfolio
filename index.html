@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Michael's Portfolio</title>
+
+    <!-- CSS (we will style later) -->
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <!-- ================= HEADER ================= -->
+    <header>
+      <nav>
+        <div class="logo">MichaelDev</div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#tools">Tools</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button id="theme-toggle">🌙</button>
+      </nav>
+    </header>
+
+    <!-- ================= HERO ================= -->
+    <section id="home" class="hero">
+      <canvas id="hero-canvas"></canvas>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1>Hi, I'm <span id="typed">Michael</span></h1>
+        <p>
+          Creating interactive web experiences with modern design and smooth
+          animations.
+        </p>
+        <a href="#projects" class="btn">View My Work</a>
+        <div class="scroll-down">↓</div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section id="about" class="fade-in">
+      <h2>About Me</h2>
+
+      <div class="about-grid">
+        <div class="about-left">
+          <!-- IMPORTANT: image must be in /public/images/profile.jpg -->
+          <div class="profile-wrapper">
+            <img
+              src="images/IMG-20251210-WA0045.jpg"
+              alt="Michael - Frontend Developer"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <div class="about-right">
+          <p><strong>Hello World! Meet Michael.</strong></p>
+
+          <p>
+           I’m a frontend-focused developer with a solid foundation in Computer Science, dedicated to building clean, responsive, and intuitive user interfaces.
+
+I enjoy transforming ideas into fully functional projects, from initial concept to deployment, with a strong emphasis on performance, user experience, and maintainable code.
+
+Currently, I am advancing my backend skills to become a versatile full-stack developer, while continuously honing my expertise across modern web technologies.
+          </p>
+
+          <h3>My Toolbox</h3>
+          <div class="toolbox">
+            <div class="tool-item">HTML5</div>
+            <div class="tool-item">CSS3</div>
+            <div class="tool-item">Tailwind CSS</div>
+            <div class="tool-item">JavaScript</div>
+            <div class="tool-item">React</div>
+            <div class="tool-item">Node.js</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section id="skills" class="fade-in">
+      <h2>Skills</h2>
+
+      <div class="skills-grid">
+        <div
+          class="skill-circle"
+          data-skill="JavaScript"
+          data-percent="90"
+        ></div>
+        <div class="skill-circle" data-skill="Python" data-percent="80"></div>
+        <div
+          class="skill-circle"
+          data-skill="HTML & CSS"
+          data-percent="95"
+        ></div>
+        <div class="skill-circle" data-skill="Node.js" data-percent="75"></div>
+        <div class="skill-circle" data-skill="React" data-percent="60"></div>
+      </div>
+    </section>
+
+    <!-- ================= TOOLS ================= -->
+    <section id="tools" class="fade-in">
+      <h2>Tools I Use</h2>
+
+      <d class="tools-grid">
+        <div class="tool-card">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+            alt="Git"
+          />
+          <p>Git</p>
+        </div>
+
+        <div class="tool-card">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+            alt="HTML"
+          />
+          <p>HTML</p>
+        </div>
+
+        <div class="tool-card">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+            alt="CSS"
+          />
+          <p>CSS</p>
+        </div>
+
+        <div class="tool-card">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+            alt="JavaScript"
+          />
+          <p>JavaScript</p>
+        </div>
+
+        <div class="tool-card">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
+            alt="Bootstrap"
+          />
+          <p>Bootstrap</p>
+        </div>
+
+        <!-- FIXED TAILWIND -->
+        <div class="tool-card">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS">
+  <p>Tailwind</p>
+</div>
+
+        <!-- FIXED VERCEL -->
+        <div class="tool-card">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg"
+            alt="Vercel"
+          />
+          <p>Vercel</p>
+        </div>
+
+        <div class="tool-card">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+            alt="VS Code"
+          />
+          <p>VS Code</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS ================= -->
+ <div class="projects-grid">
+  <!-- Project 1 -->
+  <div class="project-card" data-category="frontend">
+    <img src="images/portfolio1.jpg" alt="Portfolio Website Screenshot" />
+    <h3>Interactive Web App</h3>
+    <p>Modern UI with animations</p>
+    <div class="project-links">
+      <a href="project1.html" target="_blank">View Project</a>
+    </div>
+  </div>
+
+  <!-- Project 2 -->
+  <div class="project-card" data-category="backend">
+    <img src="images/api-server.jpg" alt="API Server Screenshot" />
+    <h3>API Server</h3>
+    <p>REST API with Node.js</p>
+    <div class="project-links">
+      <a href="projects/api-server.html" target="_blank">View Project</a>
+    </div>
+  </div>
+
+  <!-- Project 3 -->
+  <div class="project-card" data-category="fullstack">
+    <img src="images/ecommerce.jpg" alt="E-Commerce Screenshot" />
+    <h3>E-Commerce Site</h3>
+    <p>Full-stack application</p>
+    <div class="project-links">
+      <a href="projects/ecommerce.html" target="_blank">View Project</a>
+    </div>
+  </div>
+</div>
+
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="fade-in">
+      <h2>Contact Me</h2>
+
+      <form id="contact-form">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+        <p id="form-msg"></p>
+      </form>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+      <p>© 2026 MichaelDev. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JS (we will work on this later) -->
+    <script src="index.js"></script>
+  </body>
+</html>
