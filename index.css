@@ -857,6 +857,19 @@ body.light .social-links a {
 body.light .social-links a:hover {
   color: #000;
 }
+.resume-btn {
+  background: linear-gradient(135deg, #f3c969, #ffd670);
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  color: #111;
+  transition: 0.3s ease;
+}
+
+.resume-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(243,201,105,0.5);
+}
 
 
 /* ================= ANIMATIONS ================= */
