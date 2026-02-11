@@ -2,12 +2,26 @@
 const themeToggle = document.getElementById("theme-toggle");
 const body = document.body;
 
-if(localStorage.getItem("theme") === "light") body.classList.add("light");
+// Load saved theme
+if (localStorage.getItem("theme") === "light") {
+  body.classList.add("light");
+  themeToggle.textContent = "☀️";
+} else {
+  themeToggle.textContent = "🌙";
+}
 
 themeToggle.addEventListener("click", () => {
   body.classList.toggle("light");
-  localStorage.setItem("theme", body.classList.contains("light") ? "light" : "dark");
+
+  if (body.classList.contains("light")) {
+    localStorage.setItem("theme", "light");
+    themeToggle.textContent = "☀️";
+  } else {
+    localStorage.setItem("theme", "dark");
+    themeToggle.textContent = "🌙";
+  }
 });
+
 // ================= HERO TYPING EFFECT =================
 const typedElement = document.getElementById("typed");
 const heroParagraph = document.querySelector(".hero-content p");
