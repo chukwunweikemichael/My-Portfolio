@@ -1,0 +1,181 @@
+/* ================================
+   ULTRA 200 FINAL BOSS PORTFOLIO
+   Chukwunweike Michael
+================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #050810;
+  color: #e6e6e6;
+  overflow-x: hidden;
+}
+
+/* ================================
+   ANIMATED BACKGROUND
+================================ */
+
+body::before {
+  content: "";
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 20% 30%, #1a2238, transparent 40%),
+              radial-gradient(circle at 80% 70%, #2c1f4a, transparent 40%),
+              radial-gradient(circle at 50% 50%, #10172a, transparent 60%);
+  animation: bgMove 20s infinite alternate ease-in-out;
+  z-index: -1;
+}
+
+@keyframes bgMove {
+  from { transform: translate(-5%, -5%); }
+  to { transform: translate(5%, 5%); }
+}
+
+/* ================================
+   SCROLL PROGRESS BAR
+================================ */
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0%;
+  background: linear-gradient(90deg, #f3c969, #ffd700);
+  z-index: 9999;
+}
+
+/* ================================
+   CUSTOM CURSOR
+================================ */
+
+.cursor {
+  width: 8px;
+  height: 8px;
+  background: #ffd700;
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.cursor-blur {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 215, 0, 0.2);
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  filter: blur(15px);
+}
+
+/* ================================
+   GLASS SECTIONS
+================================ */
+
+section {
+  padding: 140px 10%;
+  position: relative;
+  backdrop-filter: blur(20px);
+}
+
+/* ================================
+   HERO
+================================ */
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 60px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.gold-text {
+  background: linear-gradient(90deg, #f3c969, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  margin-top: 25px;
+  color: #aaa;
+  font-size: 20px;
+}
+
+/* ================================
+   MAGNETIC BUTTON
+================================ */
+
+.btn {
+  margin-top: 40px;
+  padding: 16px 40px;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #f3c969, #ffd700);
+  color: #000;
+  font-weight: 600;
+  display: inline-block;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 20px 60px rgba(255, 215, 0, 0.4);
+}
+
+/* ================================
+   3D PROJECT CARDS
+================================ */
+
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 50px;
+  border-radius: 25px;
+  transition: 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.project-card:hover {
+  transform: rotateX(8deg) rotateY(8deg) scale(1.05);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ================================
+   SECTION TITLES
+================================ */
+
+section h2 {
+  font-size: 40px;
+  margin-bottom: 80px;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+footer {
+  padding: 60px;
+  text-align: center;
+  color: #777;
+  background: #04060d;
+}

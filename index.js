@@ -23,7 +23,7 @@ themeToggle.addEventListener("click", () => {
 });
 
 // ================= HERO TYPING EFFECT =================
-const typedElement = document.getElementById("typed");
+const mynameElement = document.getElementById("myname");
 const heroParagraph = document.querySelector(".hero-content p");
 const introText = "Michael";
 const paragraphText = "Creating interactive web experiences with modern design and smooth animations.";
@@ -31,31 +31,48 @@ const paragraphText = "Creating interactive web experiences with modern design a
 let charIndex = 0;
 let paraIndex = 0;
 
-// Type the main heading first
-function typeHeading() {
+// myname the main heading first
+function mynameHeading() {
   if (charIndex < introText.length) {
-    typedElement.textContent += introText.charAt(charIndex);
+    mynameElement.textContent += introText.charAt(charIndex);
     charIndex++;
-    setTimeout(typeHeading, 100); // typing speed in ms
+    setTimeout(mynameHeading, 100); // typing speed in ms
   } else {
-    setTimeout(typeParagraph, 500); // wait a bit before typing paragraph
+    setTimeout(mynameParagraph, 500); // wait a bit before typing paragraph
   }
 }
 
 // Type the paragraph
-function typeParagraph() {
+function mynameParagraph() {
   if (paraIndex < paragraphText.length) {
     heroParagraph.textContent += paragraphText.charAt(paraIndex);
     paraIndex++;
-    setTimeout(typeParagraph, 50);
+    setTimeout(mynameParagraph, 50);
   }
 }
 
-// Start typing on page load
-window.addEventListener("load", () => {
-  typedElement.textContent = ""; 
-  heroParagraph.textContent = "";
-  typeHeading();
+// ================= PAGE TRANSITION =================
+document.querySelectorAll("a").forEach(link => {
+  if (link.hostname === window.location.hostname) {
+    link.addEventListener("click", function (e) {
+      if (!this.hash && this.target !== "_blank") {
+        e.preventDefault();
+        document.body.style.opacity = "0";
+        document.body.style.transition = "opacity 0.5s ease";
+        setTimeout(() => {
+          window.location = this.href;
+        }, 500);
+      }
+    });
+  }
+});
+
+// ================= CURSOR GLOW =================
+const glow = document.querySelector(".cursor-glow");
+
+document.addEventListener("mousemove", (e) => {
+  glow.style.left = e.clientX + "px";
+  glow.style.top = e.clientY + "px";
 });
 
 // ================= HERO CANVAS PARTICLES =================
@@ -192,24 +209,45 @@ filterButtons.forEach(btn => {
 });
 
 // ================= FADE IN ON SCROLL =================
-const faders = document.querySelectorAll(".fade-in");
+const animatedElements = document.querySelectorAll("section, .project-card, .tool-card");
 
-const appearOptions = { threshold: 0.3, rootMargin: "0px 0px -50px 0px" };
-
-const appearOnScroll = new IntersectionObserver((entries, observer)=>{
-  entries.forEach(entry=>{
-    if(!entry.isIntersecting) return;
-    entry.target.classList.add("show");
-    observer.unobserve(entry.target);
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = "1";
+      entry.target.style.transform = "translateY(0)";
+      entry.target.style.transition = `all 0.8s ease ${index * 0.1}s`;
+    }
   });
-}, appearOptions);
+}, { threshold: 0.2 });
 
-faders.forEach(fader => appearOnScroll.observe(fader));
+animatedElements.forEach(el => {
+  el.style.opacity = "0";
+  el.style.transform = "translateY(40px)";
+  observer.observe(el);
+});
+
 
 // ================= SCROLL DOWN =================
 document.querySelector(".scroll-down").addEventListener("click", ()=>{
   document.getElementById("about").scrollIntoView({behavior:"smooth"});
 });
+// Header shrink on scroll
+window.addEventListener("scroll", () => {
+  const header = document.querySelector("header");
+
+  if (window.scrollY > 60) {
+    header.style.backdropFilter = "blur(30px)";
+    header.style.background = "rgba(10, 10, 30, 0.85)";
+    header.style.boxShadow = "0 10px 40px rgba(0,0,0,0.5)";
+  } else {
+    header.style.background = "rgba(15, 20, 53, 0.55)";
+    header.style.boxShadow = "none";
+  }
+});
+
+
+
 // ================= HERO PROFESSIONAL CODE STREAM WITH SKILLS =================
 
 // List of real skills or keywords
@@ -272,9 +310,9 @@ class CodeStream {
     ctx.font = `${this.fontSize}px monospace`;
     for (let i = 0; i < this.chars.length; i++) {
       const alpha = i / this.length; // fade effect
-      ctx.fillStyle = body.classList.contains("light")
-        ? `rgba(0,128,0,${alpha})` // green in light mode
-        : `rgba(56,189,248,${alpha})`; // blue neon in dark mode
+      ctx.fillStyle = body.classList.contains("light")     
+        ? `rgba(0, 0, 139, ${alpha})` // deep blue in light mode
+        : `rgba(56,189,248,${alpha})`// blue neon in dark mode
       ctx.fillText(this.chars[i], this.x, this.y - i * this.fontSize);
     }
   }
@@ -286,6 +324,13 @@ const streamCount = Math.floor(canvas.width / 20); // one stream per 20px
 for (let i = 0; i < streamCount; i++) {
   codeStreams.push(new CodeStream(i * 20));
 }
+// ================= PRELOADER =================
+window.addEventListener("load", () => {
+  const preloader = document.getElementById("preloader");
+  setTimeout(() => {
+    preloader.classList.add("hide");
+  }, 1000);
+});
 
 // Animate all
 function animateHeroProfessional() {

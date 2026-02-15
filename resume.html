@@ -1,109 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chukwunweike Michael | Resume</title>
-  <link rel="stylesheet" href="/ressume.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chukwunweike Michael Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="resume.css">
 </head>
+<div class="cursor"></div>
+<div class="cursor-blur"></div>
+<div class="progress-bar"></div>
+
+<script>/* Scroll Progress */
+window.addEventListener("scroll", () => {
+  let scrollTop = document.documentElement.scrollTop;
+  let scrollHeight =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+
+  let scrollPercent = (scrollTop / scrollHeight) * 100;
+  document.querySelector(".progress-bar").style.width =
+    scrollPercent + "%";
+});
+
+/* Custom Cursor */
+const cursor = document.querySelector(".cursor");
+const blur = document.querySelector(".cursor-blur");
+
+document.addEventListener("mousemove", (e) => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+  blur.style.left = e.clientX - 20 + "px";
+  blur.style.top = e.clientY - 20 + "px";
+});
+
+/* Reveal Animation */
+const sections = document.querySelectorAll("section");
+
+const reveal = () => {
+  sections.forEach((sec) => {
+    const windowHeight = window.innerHeight;
+    const revealTop = sec.getBoundingClientRect().top;
+
+    if (revealTop < windowHeight - 100) {
+      sec.style.opacity = 1;
+      sec.style.transform = "translateY(0)";
+    }
+  });
+};
+
+window.addEventListener("scroll", reveal);
+
+sections.forEach((sec) => {
+  sec.style.opacity = 0;
+  sec.style.transform = "translateY(100px)";
+  sec.style.transition = "all 1s ease";
+});
+</script>
+
 <body>
 
-  <div class="resume-container">
+<div class="progress-bar"></div>
+<div class="cursor"></div>
 
-    <!-- HEADER -->
-    <header class="resume-header">
-      <h1>Chukwunweike Michael</h1>
-      <p class="title">Frontend-Focused Developer | Aspiring Full-Stack Engineer</p>
+<header>
+  <div class="logo" onclick="location.reload()">Chukwunweike Michael</div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#resume">Resume</a></li>
+  </ul>
+</header>
 
-      <div class="contact-info">
-        <span>Lagos, Nigeria</span>
-        <span>chukwunweikemichael007@gmail.com</span>
-        <span>08132605010</span>
-      </div>
-
-      <div class="links">
-        <a href="https://quantumforge-pied.vercel.app/" target="_blank">Portfolio</a>
-        <a href="https://github.com/chukwunweikemichael/chukwunweikemichael" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/chukwunweike-michael-a90840396/" target="_blank">LinkedIn</a>
-      </div>
-    </header>
-
-    <!-- SUMMARY -->
-    <section>
-      <h2>Professional Summary</h2>
-      <p>
-        Highly motivated Computer Science graduate with strong foundations in
-        frontend development and modern web technologies. Skilled in building
-        responsive, user-focused applications with clean architecture and
-        scalable design. Passionate about continuous learning and advancing
-        toward full-stack mastery.
-      </p>
-    </section>
-
-    <!-- SKILLS -->
-    <section>
-      <h2>Technical Skills</h2>
-
-      <div class="skills-grid">
-        <div>
-          <h3>Frontend</h3>
-          <p>HTML5, CSS3, Tailwind CSS, JavaScript (DOM, APIs)</p>
-        </div>
-
-        <div>
-          <h3>Backend</h3>
-          <p>Node.js (Basic), Express (Basic), PHP (Basic)</p>
-        </div>
-
-        <div>
-          <h3>Tools</h3>
-          <p>Git, GitHub, VS Code, Vercel</p>
-        </div>
-
-        <div>
-          <h3>Other Skills</h3>
-          <p>Responsive Design, Debugging, Version Control, Clean UI/UX</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section>
-      <h2>Selected Projects</h2>
-
-      <div class="project">
-        <h3>QuantumForge Portfolio</h3>
-        <p>
-          Designed and developed a fully responsive personal portfolio showcasing
-          projects, animations, and interactive UI elements. Deployed on Vercel.
-        </p>
-      </div>
-
-      <div class="project">
-        <h3>Digital Product Agency Website (Group Project)</h3>
-        <p>
-          Collaborated in a team to build a modern digital agency website.
-          Contributed to layout structure, responsiveness, and UI enhancement.
-        </p>
-      </div>
-
-    </section>
-
-    <!-- EDUCATION -->
-    <section>
-      <h2>Education</h2>
-      <p>
-        <strong>B.Sc. Computer Science</strong><br>
-        Chukwuemeka Odumegwu Ojukwu University (Anambra State University Uli) — 2024
-      </p>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-      <p>© 2026 Chukwunweike Michael</p>
-    </footer>
-
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>
+      Lagos-Based <span class="gold">Fullstack Developer</span>
+    </h1>
+    <p>
+      I design and engineer modern, scalable and elegant web experiences
+      using JavaScript, React, Node.js and advanced UI systems.
+    </p>
+    <div class="hero-buttons">
+      <a href="#portfolio" class="btn magnetic">View Projects</a>
+      <a href="#resume" class="btn-outline magnetic">My Resume</a>
+    </div>
   </div>
+</section>
+
+<section id="about" class="reveal">
+  <h2>About Me</h2>
+  <div class="about-grid">
+    <img src="images/IMG-20251210-WA0041.jpg" alt="">
+    <div>
+      <p>
+        I'm a Lagos-based software engineer focused on building high-performance,
+        responsive and visually refined web applications.
+      </p>
+      <p>
+        I specialize in frontend architecture, UI systems, backend logic,
+        and modern deployment workflows.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio" class="reveal">
+  <h2>Selected Work</h2>
+  <div class="portfolio-grid">
+    <div class="card tilt">
+      <h3>QuantumForge</h3>
+      <p>Modern responsive portfolio platform.</p>
+      <a href="https://quantumforge-pied.vercel.app/" target="_blank">Live Project</a>
+    </div>
+
+    <div class="card tilt">
+      <h3>FindIt App</h3>
+      <p>UI modernization & frontend improvements.</p>
+      <a href="https://github.com/chukwunweikemichael/chukwunweikemichael" target="_blank">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section id="resume" class="reveal">
+  <h2>Resume</h2>
+  <div class="resume-box">
+    <p>BSc Computer Science – 2024</p>
+    <p>Frontend: HTML, CSS, JavaScript, React</p>
+    <p>Backend: Node.js, PHP, Java</p>
+    <p>Tools: Git, GitHub, Vercel</p>
+    <a href="resume.pdf" download class="btn magnetic">Download Resume</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Chukwunweike Michael
+</footer>
 
 </body>
 </html>
