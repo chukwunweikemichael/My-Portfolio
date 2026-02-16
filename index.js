@@ -25,11 +25,36 @@ themeToggle.addEventListener("click", () => {
 // ================= HERO TYPING EFFECT =================
 const mynameElement = document.getElementById("myname");
 const heroParagraph = document.querySelector(".hero-content p");
+
 const introText = "Michael";
 const paragraphText = "Creating interactive web experiences with modern design and smooth animations.";
 
 let charIndex = 0;
 let paraIndex = 0;
+
+/* Type Name */
+function typeName() {
+  if (charIndex < introText.length) {
+    mynameElement.textContent += introText.charAt(charIndex);
+    charIndex++;
+    setTimeout(typeName, 100);
+  } else {
+    setTimeout(typeParagraph, 500);
+  }
+}
+
+/* Type Paragraph */
+function typeParagraph() {
+  if (paraIndex < paragraphText.length) {
+    heroParagraph.textContent += paragraphText.charAt(paraIndex);
+    paraIndex++;
+    setTimeout(typeParagraph, 30);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  typeName();
+});
 
 // myname the main heading first
 function mynameHeading() {
