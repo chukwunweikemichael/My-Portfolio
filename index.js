@@ -1,4 +1,5 @@
 // ================= DARK/LIGHT MODE =================
+const MOBILE_MODE = true;
 const themeToggle = document.getElementById("theme-toggle");
 const body = document.body;
 
@@ -101,6 +102,7 @@ document.addEventListener("mousemove", (e) => {
 });
 
 // ================= HERO CANVAS PARTICLES =================
+const particleCount = 20;
 const canvas = document.getElementById("hero-canvas");
 const ctx = canvas.getContext("2d");
 
