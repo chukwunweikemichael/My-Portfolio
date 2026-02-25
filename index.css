@@ -1067,3 +1067,129 @@ footer {
     text-align: center;
   }
 }
+/* ================= CLEAN ELITE MOBILE NAV ================= */
+
+/* Hamburger Menu */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  position: relative;
+  z-index: 3000;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.menu-toggle .bar {
+  width: 28px; /* slightly smaller for elegance */
+  height: 3px; /* slim professional look */
+  border-radius: 8px;
+  background: linear-gradient(135deg, #38bdf8, #7c3aed);
+  box-shadow: 0 2px 6px rgba(56, 189, 248, 0.5);
+  transition: all 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Morph Animation for Hamburger */
+.menu-toggle.active .top { transform: rotate(45deg) translate(6px, 6px); }
+.menu-toggle.active .middle { opacity: 0; }
+.menu-toggle.active .bottom { transform: rotate(-45deg) translate(6px, -6px); }
+
+/* Overlay with Particle-like Background */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  z-index: 1500;
+  overflow: hidden;
+}
+
+.nav-overlay.active { opacity: 1; visibility: visible; }
+
+/* Particle Effect using pseudo-elements */
+.nav-overlay::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: moveParticles 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes moveParticles {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(40px, 40px); }
+}
+
+/* Mobile Navigation Styles */
+@media (max-width: 768px) {
+
+  .menu-toggle { display: flex; }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100vh;
+    padding-top: 120px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(25px);
+    box-shadow: -15px 0 50px rgba(0, 0, 0, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+
+    transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 2000;
+  }
+
+  .nav-links.active { right: 0; }
+
+  .nav-links li {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.4s ease;
+  }
+
+  .nav-links.active li {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Stagger animation for links */
+  .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+  .nav-links.active li:nth-child(2) { transition-delay: 0.2s; }
+  .nav-links.active li:nth-child(3) { transition-delay: 0.3s; }
+  .nav-links.active li:nth-child(4) { transition-delay: 0.4s; }
+
+  .nav-links a {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    transition: all 0.3s ease, text-shadow 0.3s ease;
+  }
+
+  /* Hover effect for links */
+  .nav-links a:hover {
+    color: #38bdf8;
+    text-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+    transform: translateY(-3px);
+  }
+}
+
+/* Prevent scroll when mobile menu is open */
+body.menu-open { overflow: hidden; }

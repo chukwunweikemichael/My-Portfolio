@@ -372,3 +372,30 @@ function animateHeroProfessional() {
 }
 
 animateHeroProfessional();
+// ================= CLEAN ELITE MOBILE MENU =================
+
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+const overlay = document.getElementById("nav-overlay");
+
+menuToggle.addEventListener("click", () => {
+  menuToggle.classList.toggle("active");
+  navLinks.classList.toggle("active");
+  overlay.classList.toggle("active");
+  document.body.classList.toggle("menu-open");
+});
+
+// Close when clicking overlay
+overlay.addEventListener("click", closeMenu);
+
+// Close when clicking nav link
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", closeMenu);
+});
+
+function closeMenu() {
+  menuToggle.classList.remove("active");
+  navLinks.classList.remove("active");
+  overlay.classList.remove("active");
+  document.body.classList.remove("menu-open");
+}
